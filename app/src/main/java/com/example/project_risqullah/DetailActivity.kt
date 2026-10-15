@@ -18,7 +18,17 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Sesuaikan system bar dengan tema halaman Tentang
+        // Gunakan MaterialToolbar sebagai ActionBar
+        setSupportActionBar(binding.detailToolbar)
+
+        supportActionBar?.apply {
+            title = "Tentang Aplikasi"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+
+        // Sesuaikan system bar dengan halaman cream
         window.statusBarColor = getColor(R.color.cream)
         window.navigationBarColor = getColor(R.color.surface_white)
 
@@ -30,12 +40,12 @@ class DetailActivity : AppCompatActivity() {
             isAppearanceLightNavigationBars = true
         }
 
-        // Tombol kembali pada header
-        binding.btnToolbarBack.setOnClickListener {
+        // Tombol kembali di Toolbar
+        binding.detailToolbar.setNavigationOnClickListener {
             finish()
         }
 
-        // Tombol Kembali pada bagian bawah
+        // Tombol Kembali di bawah kartu
         binding.btnBack.setOnClickListener {
             finish()
         }

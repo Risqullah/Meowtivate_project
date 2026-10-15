@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,40 +7,21 @@
     android:background="@color/cream"
     android:clipChildren="false">
 
-    <!-- TOOLBAR -->
-    <LinearLayout
+    <!-- TOOLBAR TENTANG APLIKASI -->
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/detailToolbar"
         android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="14dp"
-        android:paddingEnd="20dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cream"
+        android:elevation="0dp"
+        app:title="Tentang Aplikasi"
+        app:titleTextAppearance="@style/TextAppearance.Meowtivate.ToolbarTitle"
+        app:titleTextColor="@color/navy"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/navy"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageButton
-            android:id="@+id/btnToolbarBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_back"
-            android:scaleType="fitCenter"
-            android:contentDescription="Kembali"
-            app:tint="@color/navy" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Tentang Aplikasi"
-            android:textColor="@color/navy"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- KONTEN HALAMAN -->
     <androidx.core.widget.NestedScrollView
