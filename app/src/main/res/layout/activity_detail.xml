@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#131324">
+
+    <!-- Header Image -->
+    <ImageView
+        android:id="@+id/ivBanner"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_meowtivate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Dark gradient overlay for a seamless transition -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:background="#88131324"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Content Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_rounded_top"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/ivBanner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="-60dp">
+
+        <TextView
+            android:id="@+id/tvBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge"
+            android:text="🏃‍♂️ Gamified Health Tracker"
+            android:textColor="#FF7E67"
+            android:textSize="12sp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvProjectTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Meowtivate Health Tracker"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:letterSpacing="0.02"
+            app:layout_constraintTop_toBottomOf="@id/tvBadge" />
+
+        <TextView
+            android:id="@+id/tvTeamName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="👨‍💻 Tim 13: M.Risqullah &amp; Rizkie Pratama"
+            android:textColor="#FFB27D"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tvProjectTitle" />
+
+        <!-- Feature Points -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:lineSpacingExtra="6dp"
+            android:text="Aplikasi ini mengubah rutinitas kebugaran menjadi permainan yang menyenangkan. Pengguna mendapatkan poin dari setiap aktivitas fisik untuk merawat kucing virtual."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tvTeamName" />
+
+        <LinearLayout
+            android:id="@+id/llFeatures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Fitur Utama:"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="• 👟 Pelacak langkah harian"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="• 💧 Pengingat minum air"
+                android:textColor="#FCFCFF"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="• 😴 Pemantau kualitas tidur"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#FF7E67"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Kembali"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
