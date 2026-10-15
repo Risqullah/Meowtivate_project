@@ -109,8 +109,8 @@
                 android:fontFamily="@font/inter_semibold"
                 app:backgroundTint="@color/coral"
                 app:cornerRadius="12dp"
-                app:insetTop="0dp"
-                app:insetBottom="0dp" />
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
 
             <!-- REGISTRASI TANPA KOTAK -->
             <com.google.android.material.button.MaterialButton
@@ -128,8 +128,8 @@
                 app:rippleColor="@android:color/transparent"
                 app:cornerRadius="0dp"
                 app:strokeWidth="0dp"
-                app:insetTop="0dp"
-                app:insetBottom="0dp" />
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
 
         </LinearLayout>
         </androidx.cardview.widget.CardView>

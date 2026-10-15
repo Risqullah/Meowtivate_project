@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.project_risqullah.databinding.ActivityMainBinding
+import com.example.project_risqullah.pertemuan_6.SixthActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,6 +58,16 @@ class MainActivity : AppCompatActivity() {
     private fun showDashboardMenu(anchor: View) {
         val popup = PopupMenu(this, anchor)
 
+        // Menu untuk membuka halaman Praktikum 6
+        popup.menu.add("Praktikum 6 - Fragment")
+            .setOnMenuItemClickListener {
+                startActivity(
+                    Intent(this, SixthActivity::class.java)
+                )
+                true
+            }
+
+        // Menu Tentang Meowtivate
         popup.menu.add("Tentang Meowtivate")
             .setOnMenuItemClickListener {
                 startActivity(
@@ -65,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
+        // Menu Logout
         popup.menu.add("Logout")
             .setOnMenuItemClickListener {
                 showLogoutConfirmation()

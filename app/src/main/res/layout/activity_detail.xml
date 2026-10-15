@@ -231,8 +231,8 @@
                 android:textSize="14sp"
                 app:backgroundTint="@color/coral"
                 app:cornerRadius="12dp"
-                app:insetTop="0dp"
-                app:insetBottom="0dp" />
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
 
         </LinearLayout>
 
