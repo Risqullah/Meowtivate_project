@@ -1,146 +1,261 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#131324">
+    android:background="@color/cream"
+    android:clipChildren="false">
 
-    <!-- Header Image -->
-    <ImageView
-        android:id="@+id/ivBanner"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo_meowtivate"
+    <!-- TOOLBAR -->
+    <LinearLayout
+        android:id="@+id/detailToolbar"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Dark gradient overlay for a seamless transition -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:background="#88131324"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Content Card -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/bg_rounded_top"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/ivBanner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="-60dp">
+        <ImageButton
+            android:id="@+id/btnToolbarBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="fitCenter"
+            android:contentDescription="Kembali"
+            app:tint="@color/navy" />
 
         <TextView
-            android:id="@+id/tvBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_badge"
-            android:text="🏃‍♂️ Gamified Health Tracker"
-            android:textColor="#FF7E67"
-            android:textSize="12sp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="6dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Tentang Aplikasi"
+            android:textColor="@color/navy"
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tvProjectTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Meowtivate Health Tracker"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:letterSpacing="0.02"
-            app:layout_constraintTop_toBottomOf="@id/tvBadge" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvTeamName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="👨‍💻 Tim 13: M.Risqullah &amp; Rizkie Pratama"
-            android:textColor="#FFB27D"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/tvProjectTitle" />
-
-        <!-- Feature Points -->
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:lineSpacingExtra="6dp"
-            android:text="Aplikasi ini mengubah rutinitas kebugaran menjadi permainan yang menyenangkan. Pengguna mendapatkan poin dari setiap aktivitas fisik untuk merawat kucing virtual."
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/tvTeamName" />
+    <!-- KONTEN HALAMAN -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detailScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/detailToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/llFeatures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/tvDescription">
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="24dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
-            <TextView
+            <!-- LOGO DAN IDENTITAS -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Fitur Utama:"
-                android:textColor="#FFFFFF"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/ivBanner"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:src="@drawable/meowtivate_mark_rmbg"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Logo Meowtivate" />
+
+                <TextView
+                    android:id="@+id/tvProjectTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Meowtivate"
+                    android:textColor="@color/navy"
+                    android:textSize="27sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Gamified Health &amp; Fitness Tracker"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_about_badge"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="LANGKAH KECIL, LEVEL BARU."
+                    android:textColor="@color/navy"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <!-- AREA KARTU DAN MASKOT -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/aboutCardsLayer"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginTop="12dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <!-- KARTU DESKRIPSI -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/surface_white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:id="@+id/tvDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:lineSpacingExtra="3dp"
+                            android:text="Meowtivate membantu mahasiswa mencatat langkah kaki, konsumsi air putih, dan durasi tidur. XP, level, dan kucing virtual 2D memberi umpan balik visual atas aktivitas serta pencapaian."
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Versi konsep • Data disimpan lokal"
+                            android:textColor="@color/muted"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- KARTU TEMA PROYEK -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/surface_white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintTop_toBottomOf="@id/cardDescription"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="76dp"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="85dp"
+                        android:paddingTop="13dp"
+                        android:paddingBottom="13dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Tema proyek"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvTeamName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Gaya Hidup Sehat &amp; Kebugaran"
+                            android:textColor="@color/navy"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- MOCHI: MENUMPANGI KEDUA KARTU -->
+                <ImageView
+                    android:id="@+id/ivMochiPeek"
+                    android:layout_width="148dp"
+                    android:layout_height="148dp"
+                    android:layout_marginTop="79dp"
+                    android:translationX="16dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/mascot_mochi_tutupmata"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Mochi mengintip dari sisi kanan"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- TOMBOL KEMBALI: DI BAWAH KARTU -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:text="Kembali"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_semibold"
                 android:textSize="14sp"
-                android:layout_marginBottom="8dp"/>
+                app:backgroundTint="@color/coral"
+                app:cornerRadius="12dp"
+                app:insetTop="0dp"
+                app:insetBottom="0dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="• 👟 Pelacak langkah harian"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:layout_marginBottom="6dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="• 💧 Pengingat minum air"
-                android:textColor="#FCFCFF"
-                android:textSize="14sp"
-                android:layout_marginBottom="6dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="• 😴 Pemantau kualitas tidur"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#FF7E67"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Kembali"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:cornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.core.widget.NestedScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

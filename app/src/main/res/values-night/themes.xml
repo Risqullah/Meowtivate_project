@@ -1,7 +1,35 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Project_risqullah" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources>
+
+    <style name="Base.Theme.Project_risqullah"
+        parent="Theme.Material3.Light.NoActionBar">
+
+        <!-- Warna utama Meowtivate -->
+        <item name="colorPrimary">@color/navy</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/coral</item>
+        <item name="colorOnSecondary">@color/navy</item>
+
+        <item name="colorTertiary">@color/green</item>
+
+        <!-- Warna permukaan dan teks -->
+        <item name="colorSurface">@color/surface_white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOutline">@color/border_default</item>
+
+        <!-- Warna aksen dan latar aplikasi -->
+        <item name="android:colorAccent">@color/coral</item>
+        <item name="android:windowBackground">@color/cream</item>
+
+        <!-- Status bar dan navigation bar -->
+        <item name="android:statusBarColor">@color/navy</item>
+        <item name="android:navigationBarColor">@color/navy</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
     </style>
+
+    <style name="Theme.Project_risqullah"
+        parent="Base.Theme.Project_risqullah" />
+
 </resources>

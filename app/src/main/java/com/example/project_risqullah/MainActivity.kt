@@ -2,49 +2,91 @@ package com.example.project_risqullah
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.example.project_risqullah.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menerapkan ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Intent menuju halaman DetailActivity
-        binding.btnDetail.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
+        // Status bar mengikuti dashboard berwarna terang
+        window.statusBarColor = getColor(R.color.cream)
+        window.navigationBarColor = getColor(R.color.surface_white)
+
+        WindowInsetsControllerCompat(
+            window,
+            window.decorView
+        ).apply {
+            isAppearanceLightStatusBars = true
+            isAppearanceLightNavigationBars = true
         }
 
-        // AlertDialog untuk konfirmasi Log Out
-        binding.btnLogout.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Konfirmasi Log Out")
-            builder.setMessage("Apakah kamu yakin ingin keluar dari aplikasi?")
+        // Menu Tentang dan Logout
+        binding.btnDetail.setOnClickListener { view ->
+            showDashboardMenu(view)
+        }
+    }
 
-            // Jika memilih Ya
-            builder.setPositiveButton("Ya") { dialog, which ->
-                val intent = Intent(this, LoginActivity::class.java)
+    private fun showDashboardMenu(anchor: View) {
+        val popup = PopupMenu(this, anchor)
+
+        popup.menu.add("Tentang Meowtivate")
+            .setOnMenuItemClickListener {
+                startActivity(
+                    Intent(this, DetailActivity::class.java)
+                )
+                true
+            }
+
+        popup.menu.add("Logout")
+            .setOnMenuItemClickListener {
+                showLogoutConfirmation()
+                true
+            }
+
+        popup.show()
+    }
+
+    private fun showLogoutConfirmation() {
+        AlertDialog.Builder(this)
+            .setTitle("Konfirmasi Logout")
+            .setMessage(
+                "Apakah kamu yakin ingin keluar dari akun Meowtivate?"
+            )
+            .setPositiveButton("Ya") { _, _ ->
+
+                // Hapus status login dan username
+                getSharedPreferences(
+                    "MeowtivatePrefs",
+                    MODE_PRIVATE
+                ).edit()
+                    .putBoolean("isLogin", false)
+                    .remove("username")
+                    .apply()
+
+                // Kembali ke halaman Login
+                val intent = Intent(
+                    this,
+                    LoginActivity::class.java
+                )
+
                 startActivity(intent)
-                finish() // Menutup MainActivity agar tidak bisa di-back
+                finish()
             }
-
-            // Jika memilih Tidak
-            builder.setNegativeButton("Tidak") { dialog, which ->
-                dialog.dismiss() // Menutup pop-up dialog
-            }
-
-            val dialog = builder.create()
-            dialog.show()
-        }
+            .setNegativeButton("Tidak", null)
+            .show()
     }
 }

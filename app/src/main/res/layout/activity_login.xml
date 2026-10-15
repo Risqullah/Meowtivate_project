@@ -1,149 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_meowtivate">
+    android:background="@color/navy"
+    android:fillViewport="true"
+    android:overScrollMode="never">
 
-    <!-- Overlay yang lebih gelap (Dark Mode Premium) -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#DD131324" />
-
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="24dp"
-        app:cardBackgroundColor="#1E1E36"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="92dp"
+        android:paddingBottom="24dp">
 
-        <!-- Border tipis untuk Card agar terlihat elegan -->
+        <!-- LOGO ASLI DARI FIGMA -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/meowtivate_mark_rmbg"
+            android:scaleType="fitCenter"
+            android:contentDescription="Logo Meowtivate" />
+
+        <!-- NAMA APLIKASI -->
+        <TextView
+            android:id="@+id/tvAppName"
+            style="@style/TextAppearance.Meowtivate.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Meowtivate"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:gravity="center" />
+
+        <!-- FORM LOGIN -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_stat_box"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingHorizontal="28dp"
-            android:paddingTop="36dp"
-            android:paddingBottom="40dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-            <!-- Logo -->
-            <FrameLayout
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:background="@drawable/bg_circle_glow"
-                android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/ivLogo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/logo_meowtivate"/>
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="MEOWTIVATE"
-                android:textColor="#FFFFFF"
-                android:textSize="26sp"
-                android:letterSpacing="0.05"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Mulai perjalanan gaya hidup sehatmu! 💪"
-                android:textColor="#A0A0B0"
-                android:textSize="14sp"
-                android:textAlignment="center"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <!-- USERNAME -->
+            <EditText
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_height="68dp"
+                android:background="@drawable/bg_login_field"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/inter_regular"
                 android:hint="Username"
-                android:textColorHint="#A0A0B0"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeColor="#FF7E67"
-                app:hintTextColor="#FF7E67">
+                android:inputType="text"
+                android:singleLine="true"
+                android:autofillHints="username"
+                android:textColor="@color/navy"
+                android:textColorHint="@color/muted"
+                android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:inputType="text"
-                    android:textColor="#FFFFFF" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <!-- PASSWORD -->
+            <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_login_field"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/inter_regular"
                 android:hint="Password"
-                android:textColorHint="#A0A0B0"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#A0A0B0"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:boxStrokeColor="#FF7E67"
-                app:hintTextColor="#FF7E67">
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:autofillHints="password"
+                android:textColor="@color/navy"
+                android:textColorHint="@color/muted"
+                android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:inputType="textPassword"
-                    android:textColor="#FFFFFF" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
+            <!-- TOMBOL LOGIN -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="36dp"
-                android:backgroundTint="#FF7E67"
-                android:fontFamily="@font/montserrat_semibold"
+                android:layout_height="52dp"
+                android:layout_marginTop="30dp"
                 android:text="Login"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:cornerRadius="16dp" />
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:fontFamily="@font/inter_semibold"
+                app:backgroundTint="@color/coral"
+                app:cornerRadius="12dp"
+                app:insetTop="0dp"
+                app:insetBottom="0dp" />
 
-            <Button
+            <!-- REGISTRASI TANPA KOTAK -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="12dp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Daftar Akun Baru"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:cornerRadius="16dp"
-                app:strokeColor="#3A3A5A"
-                app:strokeWidth="1dp" />
+                android:minHeight="0dp"
+                android:text="Registrasi"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular"
+                app:backgroundTint="@color/navy"
+                app:rippleColor="@android:color/transparent"
+                app:cornerRadius="0dp"
+                app:strokeWidth="0dp"
+                app:insetTop="0dp"
+                app:insetBottom="0dp" />
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

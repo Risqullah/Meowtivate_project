@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- JUDUL UTAMA: POPPINS BOLD -->
+    <style name="TextAppearance.Meowtivate.Headline"
+        parent="TextAppearance.Material3.HeadlineLarge">
+
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+
+    </style>
+
+    <!-- SUBJUDUL: POPPINS SEMIBOLD -->
+    <style name="TextAppearance.Meowtivate.Title"
+        parent="TextAppearance.Material3.TitleLarge">
+
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/text_primary</item>
+
+    </style>
+
+    <!-- TEKS ISI: INTER REGULAR -->
+    <style name="TextAppearance.Meowtivate.Body"
+        parent="TextAppearance.Material3.BodyLarge">
+
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/text_secondary</item>
+
+    </style>
+
+    <!-- LABEL DAN TEKS PENDEK: INTER MEDIUM -->
+    <style name="TextAppearance.Meowtivate.Label"
+        parent="TextAppearance.Material3.LabelLarge">
+
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+
+    </style>
+
+    <!-- TEKS TEBAL: INTER SEMIBOLD -->
+    <style name="TextAppearance.Meowtivate.Emphasis"
+        parent="TextAppearance.Material3.BodyLarge">
+
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textColor">@color/text_primary</item>
+
+    </style>
+
+</resources>
