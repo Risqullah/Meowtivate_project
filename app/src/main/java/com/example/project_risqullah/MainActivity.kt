@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Status bar mengikuti dashboard berwarna terang
+        // Atur status bar agar sesuai dengan Dashboard
         window.statusBarColor = getColor(R.color.cream)
         window.navigationBarColor = getColor(R.color.surface_white)
 
@@ -33,6 +33,20 @@ class MainActivity : AppCompatActivity() {
             isAppearanceLightStatusBars = true
             isAppearanceLightNavigationBars = true
         }
+
+        // Ambil username dari SharedPreferences
+        val sharedPref = getSharedPreferences(
+            "user_pref",
+            MODE_PRIVATE
+        )
+
+        val username = sharedPref.getString(
+            "username",
+            "Pengguna"
+        ) ?: "Pengguna"
+
+        // Latihan mandiri: sapaan pengguna
+        binding.tvWelcome.text = "Halo, $username"
 
         // Menu Tentang dan Logout
         binding.btnDetail.setOnClickListener { view ->
@@ -68,23 +82,24 @@ class MainActivity : AppCompatActivity() {
             )
             .setPositiveButton("Ya") { _, _ ->
 
-                // Hapus status login dan username
+                // Hapus semua data sesi dari penyimpanan yang benar
                 getSharedPreferences(
-                    "MeowtivatePrefs",
+                    "user_pref",
                     MODE_PRIVATE
                 ).edit()
-                    .putBoolean("isLogin", false)
-                    .remove("username")
+                    .clear()
                     .apply()
 
-                // Kembali ke halaman Login
+                // Kembali ke Login dan bersihkan back stack
                 val intent = Intent(
                     this,
                     LoginActivity::class.java
-                )
+                ).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
 
                 startActivity(intent)
-                finish()
             }
             .setNegativeButton("Tidak", null)
             .show()

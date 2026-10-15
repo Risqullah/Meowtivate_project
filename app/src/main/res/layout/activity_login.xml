@@ -39,12 +39,21 @@
             android:textSize="36sp"
             android:gravity="center" />
 
-        <!-- FORM LOGIN -->
-        <LinearLayout
+        <!-- FORM LOGIN DALAM CARDVIEW -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            app:cardBackgroundColor="@color/navy_secondary"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
 
             <!-- USERNAME -->
             <EditText
@@ -123,7 +132,8 @@
                 app:insetBottom="0dp" />
 
         </LinearLayout>
-
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 
 </androidx.core.widget.NestedScrollView>
