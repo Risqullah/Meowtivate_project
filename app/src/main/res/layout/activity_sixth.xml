@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".pertemuan_6.SixthActivity">
+
+    <!-- TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/navy"
+        app:title="Meowtivate Lab"
+        app:subtitle="Penerapan Fragment"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/peach"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- TOMBOL FRAGMENT 1 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFragment1"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="4dp"
+        android:text="Fragment 1"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/navy_secondary"
+        app:cornerRadius="12dp"
+        app:insetTop="0dp"
+        app:insetBottom="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnFragment2" />
+
+    <!-- TOMBOL FRAGMENT 2 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFragment2"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="Fragment 2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/navy"
+        app:backgroundTint="@color/peach"
+        app:cornerRadius="12dp"
+        app:insetTop="0dp"
+        app:insetBottom="0dp"
+        app:layout_constraintTop_toTopOf="@id/btnFragment1"
+        app:layout_constraintStart_toEndOf="@id/btnFragment1"
+        app:layout_constraintEnd_toStartOf="@id/btnFragment3" />
+
+    <!-- TOMBOL FRAGMENT 3 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFragment3"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="Fragment 3"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/navy_secondary"
+        app:cornerRadius="12dp"
+        app:insetTop="0dp"
+        app:insetBottom="0dp"
+        app:layout_constraintTop_toTopOf="@id/btnFragment1"
+        app:layout_constraintStart_toEndOf="@id/btnFragment2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- TEMPAT FRAGMENT DITAMPILKAN -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/surface_white"
+        app:layout_constraintTop_toBottomOf="@id/btnFragment1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
