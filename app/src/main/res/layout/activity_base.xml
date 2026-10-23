@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream">
 
-    <!-- Tempat halaman Fragment ditampilkan -->
+    <!-- Area untuk konten Fragment -->
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Navigasi bawah Meowtivate -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_view"
+    <!-- Background navigasi dengan garis pemisah atas -->
+    <FrameLayout
+        android:id="@+id/bottom_nav_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/surface_white"
-        app:itemHorizontalTranslationEnabled="false"
-        app:itemIconTint="@color/navy_secondary"
-        app:itemTextColor="@color/text_secondary"
-        app:labelVisibilityMode="labeled"
+        android:background="@drawable/bg_bottom_nav_surface"
+        android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:itemActiveIndicatorColor="@color/peach"
+            app:itemActiveIndicatorEnabled="true"
+            app:itemHorizontalTranslationEnabled="false"
+            app:itemIconSize="22dp"
+            app:itemIconTint="@color/nav_bottom_tint"
+            app:itemRippleColor="@color/peach"
+            app:itemTextColor="@color/nav_bottom_tint"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Latar putih menyatu dengan tepi layar -->
+    <item android:drawable="@color/surface_white" />
+
+    <!-- Garis pemisah tipis di bagian atas -->
+    <item
+        android:height="1dp"
+        android:drawable="@color/border_default"
+        android:gravity="top" />
+
+</layer-list>
