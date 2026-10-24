@@ -459,6 +459,28 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- AKTIVITAS TERBARU -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Aktivitas terbaru"
+            android:textColor="@color/navy"
+            android:textSize="16sp" />
+
+        <ListView
+            android:id="@+id/listRecentActivities"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="4dp"
+            android:listSelector="@android:color/transparent"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
