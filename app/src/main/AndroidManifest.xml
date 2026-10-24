@@ -33,7 +33,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".pertemuan_6.SixthActivity"
+            android:name=".Home.pertemuan_6.SixthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

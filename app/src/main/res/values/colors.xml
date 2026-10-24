@@ -42,4 +42,6 @@
     <!-- Latar progress bar -->
     <color name="progress_track">#E7E8ED</color>
     <color name="xp_track">#505066</color>
+
+    <color name="insight_surface">#FFF2CC</color>
 </resources>

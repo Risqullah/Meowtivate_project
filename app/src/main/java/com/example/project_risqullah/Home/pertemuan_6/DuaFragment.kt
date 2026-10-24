@@ -1,4 +1,4 @@
-package com.example.project_risqullah.pertemuan_6
+package com.example.project_risqullah.Home.pertemuan_6
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
