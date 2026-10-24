@@ -35,8 +35,6 @@
             android:elevation="0dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:itemActiveIndicatorColor="@color/peach"
-            app:itemActiveIndicatorEnabled="true"
             app:itemHorizontalTranslationEnabled="false"
             app:itemIconSize="22dp"
             app:itemIconTint="@color/nav_bottom_tint"
