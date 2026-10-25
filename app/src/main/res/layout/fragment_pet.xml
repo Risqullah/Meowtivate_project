@@ -534,6 +534,37 @@
 
         </LinearLayout>
 
+        <!-- PESAN DARI MOCHI -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Pesan dari Mochi"
+            android:textColor="@color/navy"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="Pengingat kecil untuk rutinitas sehatmu."
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp" />
+
+        <ListView
+            android:id="@+id/listPetMessages"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
