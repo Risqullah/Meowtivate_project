@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
 
                 startActivity(
-                    Intent(this, MainActivity::class.java)
+                    Intent(this, BaseActivity::class.java)
                 )
 
                 finish()

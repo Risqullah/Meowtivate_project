@@ -39,7 +39,7 @@ class SplashActivity : AppCompatActivity() {
 
             // Menentukan halaman tujuan
             val target = if (isLogin) {
-                MainActivity::class.java
+                BaseActivity::class.java
             } else {
                 LoginActivity::class.java
             }
