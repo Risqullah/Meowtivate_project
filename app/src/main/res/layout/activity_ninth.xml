@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".Home.pertemuan_9.NinthActivity">
+
+    <!-- HEADER WAVE -->
+    <View
+        android:id="@+id/background_header"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:background="@drawable/bg_header_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Pertemuan 9"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvPageHero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Kenali Meowtivate"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/tvPageHeroSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Bangun kebiasaan sehat bersama Mochi."
+        android:textColor="@color/peach"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPageHero" />
+
+    <!-- KONTEN YANG BISA DIGULIR -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollNinth"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/background_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="24dp">
+
+            <!-- KARTU FORM -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface_white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Catat aktivitas"
+                        android:textColor="@color/navy"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Lengkapi aktivitas sehatmu hari ini."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:hint="Nama Aktivitas"
+                        app:boxStrokeColor="@color/coral"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="20"
+                        app:helperText="Contoh: Jalan pagi"
+                        app:startIconDrawable="@drawable/ic_edit"
+                        app:startIconTint="@color/coral">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etActivityName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:inputType="textCapSentences"
+                            android:maxLength="20"
+                            android:textColor="@color/navy" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- INPUT DURASI -->
+                    <EditText
+                        android:id="@+id/etDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_rounded_container"
+                        android:fontFamily="@font/inter_regular"
+                        android:hint="Durasi aktivitas (menit)"
+                        android:inputType="number"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColor="@color/navy"
+                        android:textColorHint="@color/muted"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Simpan Aktivitas"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/coral"
+                        app:cornerRadius="13dp"
+                        app:icon="@drawable/ic_login"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/white" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CHIP GROUP -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Kategori aktivitas"
+                android:textColor="@color/navy"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="Pilih kategori yang ingin kamu lihat."
+                android:textColor="@color/text_secondary"
+                android:textSize="10sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Semua"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/peach"
+                    app:chipStrokeColor="@color/border_default" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSteps"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Langkah"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/peach"
+                    app:chipStrokeColor="@color/border_default" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipWater"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Air Putih"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/peach"
+                    app:chipStrokeColor="@color/border_default" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSleep"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tidur"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/peach"
+                    app:chipStrokeColor="@color/border_default" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- GRID 6 FITUR -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Jelajahi fitur"
+                android:textColor="@color/navy"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="Pilihan fitur untuk mendukung rutinitasmu."
+                android:textColor="@color/text_secondary"
+                android:textSize="10sp" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="2dp"
+                app:columnCount="3"
+                app:useDefaultMargins="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridSteps"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Langkah"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/steps_surface"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridWater"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Air Putih"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/water_surface"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridSleep"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Tidur"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/sleep_surface"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridXp"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="XP &amp; Level"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/peach"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Riwayat"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/mint"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridTargets"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Target"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:textSize="10sp"
+                    app:backgroundTint="@color/surface_white"
+                    app:cornerRadius="12dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp" />
+
+            </androidx.gridlayout.widget.GridLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

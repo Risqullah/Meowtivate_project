@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.example.project_risqullah.DetailActivity
 import com.example.project_risqullah.Home.pertemuan_6.SixthActivity
+import com.example.project_risqullah.Home.pertemuan_9.NinthActivity
 import com.example.project_risqullah.LoginActivity
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.FragmentHomeBinding
@@ -30,7 +31,6 @@ class HomeFragment : Fragment() {
             container,
             false
         )
-
         return binding.root
     }
 
@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Membaca username dari SharedPreferences
+        // Ambil username dari SharedPreferences
         val sharedPref = requireContext()
             .getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
 
         binding.tvWelcome.text = "Halo, $username"
 
-        // Menu aplikasi pada Dashboard
+        // Menu titik tiga
         binding.btnDetail.setOnClickListener { anchor ->
             showDashboardMenu(anchor)
         }
@@ -60,6 +60,7 @@ class HomeFragment : Fragment() {
     private fun showDashboardMenu(anchor: View) {
         val popup = PopupMenu(requireContext(), anchor)
 
+        // Praktikum 6
         popup.menu.add("Praktikum 6 - Fragment")
             .setOnMenuItemClickListener {
                 startActivity(
@@ -68,6 +69,16 @@ class HomeFragment : Fragment() {
                 true
             }
 
+        // Praktikum 9
+        popup.menu.add("Pertemuan 9 - Komponen UI")
+            .setOnMenuItemClickListener {
+                startActivity(
+                    Intent(requireContext(), NinthActivity::class.java)
+                )
+                true
+            }
+
+        // Tentang Meowtivate
         popup.menu.add("Tentang Meowtivate")
             .setOnMenuItemClickListener {
                 startActivity(
@@ -76,6 +87,7 @@ class HomeFragment : Fragment() {
                 true
             }
 
+        // Logout
         popup.menu.add("Logout")
             .setOnMenuItemClickListener {
                 showLogoutConfirmation()
@@ -103,7 +115,7 @@ class HomeFragment : Fragment() {
                     .clear()
                     .apply()
 
-                // Kembali ke Login dan bersihkan back stack
+                // Kembali ke Login dan hapus back stack
                 val intent = Intent(
                     requireContext(),
                     LoginActivity::class.java
