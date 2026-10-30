@@ -5,413 +5,442 @@
     android:layout_height="match_parent"
     android:background="@color/cream">
 
-    <!-- KONTEN DASHBOARD -->
+    <!-- AREA DASHBOARD YANG BISA DIGULIR -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollDashboard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:fillViewport="true"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- PEMBUNGKUS UTAMA TANPA PADDING -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingTop="40dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="16dp">
+            android:orientation="vertical">
 
-            <!-- SAPAAN DAN TANGGAL -->
-            <LinearLayout
+            <!-- ================================== -->
+            <!-- HEADER FULL WIDTH MEOWTIVATE       -->
+            <!-- ================================== -->
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvWelcome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Selamat pagi!"
-                        android:textColor="@color/navy"
-                        android:textSize="22sp" />
-
-                    <TextView
-                        android:id="@+id/tvSubtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/inter_regular"
-                        android:text="Senin, 12 Oktober"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <!-- MENU DETAIL DAN LOGOUT -->
-                <TextView
-                    android:id="@+id/btnDetail"
-                    android:layout_width="36dp"
-                    android:layout_height="40dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="Menu aplikasi"
-                    android:focusable="true"
-                    android:fontFamily="@font/inter_semibold"
-                    android:gravity="center"
-                    android:text="⋮"
-                    android:textColor="@color/navy"
-                    android:textSize="23sp" />
-
-            </LinearLayout>
-
-            <!-- KARTU XP: LOGO, BUKAN ILUSTRASI MOCHI -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/navy"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="0dp"
-                app:cardUseCompatPadding="false">
+                android:layout_height="180dp"
+                android:background="@drawable/bg_header_wave">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="13dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="64dp">
 
-                    <ImageView
-                        android:layout_width="34dp"
-                        android:layout_height="34dp"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="2dp"
-                        android:contentDescription="Logo Meowtivate"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/meowtivate_mark_rmbg" />
-
+                    <!-- SAPAAN DAN TANGGAL -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <!-- JUDUL DAN BADGE XP -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tvWelcome"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Selamat pagi!"
+                            android:textColor="@color/white"
+                            android:textSize="22sp" />
 
+                        <TextView
+                            android:id="@+id/tvSubtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Senin, 12 Oktober"
+                            android:textColor="@color/peach"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <!-- MENU TITIK TIGA -->
+                    <TextView
+                        android:id="@+id/btnDetail"
+                        android:layout_width="36dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:contentDescription="Menu aplikasi"
+                        android:focusable="true"
+                        android:fontFamily="@font/inter_semibold"
+                        android:gravity="center"
+                        android:text="⋮"
+                        android:textColor="@color/white"
+                        android:textSize="23sp" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- ================================== -->
+            <!-- KONTEN DASHBOARD                   -->
+            <!-- ================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="16dp">
+
+                <!-- KARTU XP -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    app:cardBackgroundColor="@color/navy"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="13dp">
+
+                        <!-- LOGO MEOWTIVATE -->
+                        <ImageView
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="2dp"
+                            android:contentDescription="Logo Meowtivate"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/meowtivate_mark_rmbg" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <!-- JUDUL DAN BADGE XP -->
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/inter_semibold"
+                                        android:text="Mochi · Level 3"
+                                        android:textColor="@color/white"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:fontFamily="@font/inter_regular"
+                                        android:text="245 XP total"
+                                        android:textColor="@color/peach"
+                                        android:textSize="10sp" />
+
+                                </LinearLayout>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:background="@drawable/bg_xp_pill"
                                     android:fontFamily="@font/inter_semibold"
-                                    android:text="Mochi · Level 3"
+                                    android:paddingStart="9dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingEnd="9dp"
+                                    android:paddingBottom="6dp"
+                                    android:text="45/100 XP"
                                     android:textColor="@color/white"
-                                    android:textSize="13sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:fontFamily="@font/inter_regular"
-                                    android:text="245 XP total"
-                                    android:textColor="@color/peach"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
 
+                            <!-- PROGRESS XP -->
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="7dp"
+                                android:layout_marginTop="12dp"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="45"
+                                android:progressBackgroundTint="@color/xp_track"
+                                android:progressTint="@color/coral" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/bg_xp_pill"
-                                android:fontFamily="@font/inter_semibold"
-                                android:paddingStart="9dp"
-                                android:paddingTop="6dp"
-                                android:paddingEnd="9dp"
-                                android:paddingBottom="6dp"
-                                android:text="45/100 XP"
-                                android:textColor="@color/white"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/inter_regular"
+                                android:text="45 XP menuju level berikutnya"
+                                android:textColor="@color/peach"
                                 android:textSize="10sp" />
 
                         </LinearLayout>
 
-                        <!-- PROGRES XP -->
-                        <ProgressBar
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="7dp"
-                            android:layout_marginTop="12dp"
-                            android:indeterminate="false"
-                            android:max="100"
-                            android:progress="45"
-                            android:progressBackgroundTint="@color/xp_track"
-                            android:progressTint="@color/coral" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/inter_regular"
-                            android:text="45 XP menuju level berikutnya"
-                            android:textColor="@color/peach"
-                            android:textSize="10sp" />
-
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
-
-            <!-- JUDUL TARGET -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Target hari ini"
-                android:textColor="@color/navy"
-                android:textSize="18sp" />
-
-            <!-- TARGET LANGKAH -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardBackgroundColor="@color/surface_white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="1dp"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
+                <!-- JUDUL TARGET -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Target hari ini"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp" />
 
-                    <FrameLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_steps_icon">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="👣"
-                            android:textSize="21sp" />
-
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="11dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_semibold"
-                            android:text="Langkah kaki"
-                            android:textColor="@color/navy"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tvStepsProgress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/inter_regular"
-                            android:text="3.250 / 6.000"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
-
-                        <ProgressBar
-                            android:id="@+id/pbSteps"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="5dp"
-                            android:layout_marginTop="7dp"
-                            android:max="6000"
-                            android:progress="3250"
-                            android:progressBackgroundTint="@color/progress_track"
-                            android:progressTint="@color/green" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- TARGET AIR PUTIH -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardBackgroundColor="@color/surface_white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="1dp"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
+                <!-- TARGET LANGKAH -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <FrameLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_water_icon">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="💧"
-                            android:textSize="21sp" />
-
-                    </FrameLayout>
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="@color/surface_white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="false">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="11dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/bg_steps_icon">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="👣"
+                                android:textSize="21sp" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_semibold"
-                            android:text="Air putih"
-                            android:textColor="@color/navy"
-                            android:textSize="12sp" />
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvWaterProgress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/inter_regular"
-                            android:text="800 / 1.600 ml"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Langkah kaki"
+                                android:textColor="@color/navy"
+                                android:textSize="12sp" />
 
-                        <ProgressBar
-                            android:id="@+id/pbWater"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="5dp"
-                            android:layout_marginTop="7dp"
-                            android:max="1600"
-                            android:progress="800"
-                            android:progressBackgroundTint="@color/progress_track"
-                            android:progressTint="@color/water_blue" />
+                            <TextView
+                                android:id="@+id/tvStepsProgress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:fontFamily="@font/inter_regular"
+                                android:text="3.250 / 6.000"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp" />
+
+                            <ProgressBar
+                                android:id="@+id/pbSteps"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:layout_marginTop="7dp"
+                                android:max="6000"
+                                android:progress="3250"
+                                android:progressBackgroundTint="@color/progress_track"
+                                android:progressTint="@color/green" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
-
-            <!-- TARGET TIDUR -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardBackgroundColor="@color/surface_white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="1dp"
-                app:cardUseCompatPadding="false">
-
-                <LinearLayout
+                <!-- TARGET AIR PUTIH -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
-
-                    <FrameLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_sleep_icon">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="💤"
-                            android:textSize="20sp" />
-
-                    </FrameLayout>
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="@color/surface_white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="false">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="11dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/bg_water_icon">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="💧"
+                                android:textSize="21sp" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter_semibold"
-                            android:text="Tidur"
-                            android:textColor="@color/navy"
-                            android:textSize="12sp" />
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvSleepProgress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/inter_regular"
-                            android:text="6j 30m / 7j"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Air putih"
+                                android:textColor="@color/navy"
+                                android:textSize="12sp" />
 
-                        <ProgressBar
-                            android:id="@+id/pbSleep"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="5dp"
-                            android:layout_marginTop="7dp"
-                            android:max="420"
-                            android:progress="390"
-                            android:progressBackgroundTint="@color/progress_track"
-                            android:progressTint="@color/sleep_lavender" />
+                            <TextView
+                                android:id="@+id/tvWaterProgress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:fontFamily="@font/inter_regular"
+                                android:text="800 / 1.600 ml"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp" />
+
+                            <ProgressBar
+                                android:id="@+id/pbWater"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:layout_marginTop="7dp"
+                                android:max="1600"
+                                android:progress="800"
+                                android:progressBackgroundTint="@color/progress_track"
+                                android:progressTint="@color/water_blue" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+                <!-- TARGET TIDUR -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="@color/surface_white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="1dp"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/bg_sleep_icon">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="💤"
+                                android:textSize="20sp" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Tidur"
+                                android:textColor="@color/navy"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvSleepProgress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:fontFamily="@font/inter_regular"
+                                android:text="6j 30m / 7j"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp" />
+
+                            <ProgressBar
+                                android:id="@+id/pbSleep"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:layout_marginTop="7dp"
+                                android:max="420"
+                                android:progress="390"
+                                android:progressBackgroundTint="@color/progress_track"
+                                android:progressTint="@color/sleep_lavender" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
