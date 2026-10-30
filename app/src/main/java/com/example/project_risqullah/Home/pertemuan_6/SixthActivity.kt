@@ -87,13 +87,13 @@ class SixthActivity : AppCompatActivity() {
     ): Boolean {
         return when (item.itemId) {
 
-            // Tombol kembali pada Toolbar
+            // Tombol panah kembali pada Toolbar
             android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
+                finish()
                 true
             }
 
-            // Pilihan Logout dari Option Menu
+            // Pilihan Logout
             R.id.action_logout -> {
                 showLogoutConfirmation()
                 true

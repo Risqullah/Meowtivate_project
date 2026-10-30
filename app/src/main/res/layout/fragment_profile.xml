@@ -438,7 +438,7 @@
             <ListView
                 android:id="@+id/listHealthyHabits"
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="200dp"
                 android:background="@android:color/transparent"
                 android:clipToPadding="false"
                 android:divider="@color/border_default"
@@ -448,7 +448,8 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:scrollbars="none"
-                tools:listitem="@android:layout/simple_list_item_2" />
+                tools:listitem="@layout/item_habit"
+                tools:itemCount="4" />
 
         </androidx.cardview.widget.CardView>
 
