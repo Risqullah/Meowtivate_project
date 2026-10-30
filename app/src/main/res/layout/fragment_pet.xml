@@ -553,6 +553,71 @@
             android:textColor="@color/text_secondary"
             android:textSize="11sp" />
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnOpenTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/peach"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_about_badge"
+                    android:gravity="center"
+                    android:text="✦"
+                    android:textColor="@color/coral"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Kenali Fitur Meowtivate"
+                        android:textColor="@color/navy"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Pelajari cara menggunakan aplikasi."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/navy"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
         <ListView
             android:id="@+id/listPetMessages"
             android:layout_width="match_parent"

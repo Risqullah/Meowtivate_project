@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.project_risqullah.Home.pertemuan_9.tutorial.TutorialMeowtivateActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -41,7 +42,7 @@ class SplashActivity : AppCompatActivity() {
             val target = if (isLogin) {
                 BaseActivity::class.java
             } else {
-                LoginActivity::class.java
+                TutorialMeowtivateActivity::class.java
             }
 
             startActivity(Intent(this@SplashActivity, target))

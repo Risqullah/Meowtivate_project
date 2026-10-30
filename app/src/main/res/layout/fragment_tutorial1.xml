@@ -1,51 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tutorial_blue">
+    android:background="@color/cream"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="28dp"
+    android:paddingVertical="20dp">
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="38dp"
-        android:contentDescription="Logo Meowtivate"
-        android:scaleType="fitCenter"
-        android:src="@drawable/meowtivate_mark_rmbg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- LABEL HALAMAN -->
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/bg_about_badge"
+        android:fontFamily="@font/inter_semibold"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="7dp"
+        android:text="01  /  PENGENALAN"
+        android:textColor="@color/coral_dark"
+        android:textSize="10sp" />
+
+    <!-- KARTU LOGO -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/peach"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:layout_width="136dp"
+            android:layout_height="136dp"
+            android:layout_gravity="center"
+            android:contentDescription="Logo Meowtivate"
+            android:scaleType="fitCenter"
+            android:src="@drawable/meowtivate_mark_rmbg" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- JUDUL -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:text="Selamat Datang di Meowtivate!"
+        android:text="Mulai dari Langkah Kecil"
         android:textColor="@color/navy"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo" />
+        android:textSize="22sp" />
 
+    <!-- DESKRIPSI -->
     <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_regular"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="Meowtivate membantu kamu membangun kebiasaan sehat dengan cara yang sederhana, menyenangkan, dan ditemani Mochi."
-        android:textColor="@color/navy"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        android:text="Meowtivate membantu kamu membangun kebiasaan sehat dengan cara yang praktis dan menyenangkan, ditemani Mochi setiap hari."
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- KEUNGGULAN -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_steps_icon"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="9dp"
+            android:text="Sehat"
+            android:textColor="@color/navy"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/bg_water_icon"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="9dp"
+            android:text="Praktis"
+            android:textColor="@color/navy"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/bg_sleep_icon"
+            android:fontFamily="@font/inter_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="9dp"
+            android:text="Menyenangkan"
+            android:textColor="@color/navy"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
