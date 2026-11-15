@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.example.project_risqullah.DetailActivity
+import com.example.project_risqullah.Home.pertemuan_10.TenthActivity
 import com.example.project_risqullah.Home.pertemuan_6.SixthActivity
 import com.example.project_risqullah.Home.pertemuan_9.NinthActivity
 import com.example.project_risqullah.LoginActivity
@@ -74,6 +75,15 @@ class HomeFragment : Fragment() {
             .setOnMenuItemClickListener {
                 startActivity(
                     Intent(requireContext(), NinthActivity::class.java)
+                )
+                true
+            }
+
+        // Praktikum 10
+        popup.menu.add("Pertemuan 10 - Tab & RecyclerView")
+            .setOnMenuItemClickListener {
+                startActivity(
+                    Intent(requireContext(), TenthActivity::class.java)
                 )
                 true
             }
