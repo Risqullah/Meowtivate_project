@@ -148,7 +148,6 @@ class HomeFragment : Fragment() {
     // =====================================
     // MENU TITIK TIGA
     // =====================================
-
     private fun showDashboardMenu(anchor: View) {
 
         val popup = PopupMenu(
@@ -156,28 +155,41 @@ class HomeFragment : Fragment() {
             anchor
         )
 
-        // Tentang Meowtivate
-        popup.menu.add("Tentang Meowtivate")
-            .setOnMenuItemClickListener {
+        // Mengambil menu dari resource XML
+        popup.menuInflater.inflate(
+            R.menu.main_menu,
+            popup.menu
+        )
 
-                startActivity(
-                    Intent(
-                        requireContext(),
-                        DetailActivity::class.java
+        // Menangani pilihan menu
+        popup.setOnMenuItemClickListener { item ->
+
+            when (item.itemId) {
+
+                // Tentang Meowtivate
+                R.id.action_about -> {
+
+                    startActivity(
+                        Intent(
+                            requireContext(),
+                            DetailActivity::class.java
+                        )
                     )
-                )
 
-                true
+                    true
+                }
+
+                // Logout
+                R.id.action_logout -> {
+
+                    showLogoutConfirmation()
+
+                    true
+                }
+
+                else -> false
             }
-
-        // Logout
-        popup.menu.add("Logout")
-            .setOnMenuItemClickListener {
-
-                showLogoutConfirmation()
-
-                true
-            }
+        }
 
         popup.show()
     }
