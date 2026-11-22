@@ -33,7 +33,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Home.pertemuan_6.SixthActivity"
+            android:name=".archive.praktikum.pertemuan_6.SixthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -45,11 +45,23 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Home.pertemuan_9.tutorial.TutorialMeowtivateActivity"
+            android:name=".Onboarding.TutorialMeowtivateActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Home.pertemuan_10.TenthActivity"
+            android:name=".archive.praktikum.pertemuan_10.TenthActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".data.entity.ActivityRecordEntity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".data.dao.ActivityRecordDao"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".HealthInfoActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

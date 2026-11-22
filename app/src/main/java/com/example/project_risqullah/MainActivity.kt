@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.project_risqullah.databinding.ActivityMainBinding
-import com.example.project_risqullah.Home.pertemuan_6.SixthActivity
+import com.example.project_risqullah.archive.praktikum.pertemuan_6.SixthActivity
 
 class MainActivity : AppCompatActivity() {
 

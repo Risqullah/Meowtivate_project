@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_10
+package com.example.project_risqullah.archive.praktikum.pertemuan_10
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

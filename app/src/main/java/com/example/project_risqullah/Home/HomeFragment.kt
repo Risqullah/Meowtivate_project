@@ -14,7 +14,6 @@ import com.example.project_risqullah.LoginActivity
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.project_risqullah.History.ActivityRecordStorage
 import java.text.NumberFormat
 import java.util.Calendar
 import java.util.Locale

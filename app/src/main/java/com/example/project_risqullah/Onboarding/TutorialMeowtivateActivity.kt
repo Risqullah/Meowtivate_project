@@ -1,10 +1,7 @@
-package com.example.project_risqullah.Home.pertemuan_9.tutorial
+package com.example.project_risqullah.Onboarding
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.ActivityTutorialMeowtivateBinding
 

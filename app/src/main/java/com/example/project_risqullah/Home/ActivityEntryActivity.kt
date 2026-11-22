@@ -3,11 +3,8 @@ package com.example.project_risqullah.Home
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.project_risqullah.History.ActivityRecord
-import com.example.project_risqullah.History.ActivityRecordStorage
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.ActivityEntryBinding
-import com.google.android.material.chip.Chip
 import java.util.UUID
 
 class ActivityEntryActivity : AppCompatActivity() {

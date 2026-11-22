@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_9.tutorial
+package com.example.project_risqullah.archive.praktikum.pertemuan_6
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.project_risqullah.R
 
-class Tutorial2Fragment : Fragment() {
+class DuaFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(
-            R.layout.fragment_tutorial2,
+            R.layout.fragment_dua,
             container,
             false
         )

@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_6
+package com.example.project_risqullah.archive.praktikum.pertemuan_6
 
 import android.content.Intent
 import android.os.Bundle

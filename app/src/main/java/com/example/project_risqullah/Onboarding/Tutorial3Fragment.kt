@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_9.tutorial
+package com.example.project_risqullah.Onboarding
 
 import android.content.Intent
 import android.os.Bundle

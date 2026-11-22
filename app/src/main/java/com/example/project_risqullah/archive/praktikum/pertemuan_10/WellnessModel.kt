@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_10
+package com.example.project_risqullah.archive.praktikum.pertemuan_10
 
 data class WellnessModel(
     val icon: String,

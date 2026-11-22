@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.project_risqullah.Home.pertemuan_9.tutorial.TutorialMeowtivateActivity
+import com.example.project_risqullah.Onboarding.TutorialMeowtivateActivity
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.FragmentPetBinding
 

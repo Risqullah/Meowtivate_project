@@ -1,11 +1,8 @@
-package com.example.project_risqullah.Home.pertemuan_10
+package com.example.project_risqullah.archive.praktikum.pertemuan_10
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.ActivityTenthBinding
 import com.google.android.material.tabs.TabLayoutMediator

@@ -1,4 +1,4 @@
-package com.example.project_risqullah.Home.pertemuan_10
+package com.example.project_risqullah.archive.praktikum.pertemuan_10
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,55 +8,54 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project_risqullah.R
-import com.example.project_risqullah.databinding.FragmentTabHabitBinding
+import com.example.project_risqullah.databinding.FragmentTabTipsBinding
 
-class TabHabitFragment : Fragment() {
-
-    private var _binding: FragmentTabHabitBinding? = null
+class TabTipsFragment : Fragment() {
+    private var _binding: FragmentTabTipsBinding? = null
     private val binding get() = _binding!!
 
-    // Data kebiasaan sehat Meowtivate
-    private val habitList = listOf(
-
-        WellnessModel(
-            "👣",
-            "Langkah Kaki",
-            "Target: 6.000 langkah per hari",
-            R.drawable.bg_steps_icon
-        ),
+    // Data tips hidup sehat Meowtivate
+    private val tipsList = listOf(
 
         WellnessModel(
             "💧",
-            "Air Putih",
-            "Target: 1.600 ml per hari",
+            "Minum Air Teratur",
+            "Bagi konsumsi air putih sepanjang hari",
             R.drawable.bg_water_icon
         ),
 
         WellnessModel(
+            "👣",
+            "Mulai dari Langkah Kecil",
+            "Tingkatkan aktivitas fisik secara bertahap",
+            R.drawable.bg_steps_icon
+        ),
+
+        WellnessModel(
             "💤",
-            "Durasi Tidur",
-            "Target: 7 jam per hari",
+            "Jaga Jadwal Tidur",
+            "Tidur dan bangun pada waktu yang konsisten",
             R.drawable.bg_sleep_icon
         ),
 
         WellnessModel(
             "🧘",
-            "Peregangan",
-            "Lakukan peregangan selama 10 menit",
+            "Lakukan Peregangan",
+            "Selingi waktu duduk dengan gerakan ringan",
             R.drawable.bg_achievement_star
         ),
 
         WellnessModel(
-            "🌤️",
-            "Jalan Pagi",
-            "Mulai hari dengan berjalan santai",
+            "🎯",
+            "Buat Target Realistis",
+            "Sesuaikan target dengan kemampuan tubuh",
             R.drawable.bg_about_badge
         ),
 
         WellnessModel(
             "📝",
-            "Catat Aktivitas",
-            "Pantau aktivitas sehat setiap hari",
+            "Catat Perkembangan",
+            "Evaluasi kebiasaan sehat secara rutin",
             R.drawable.bg_xp_pill
         )
     )
@@ -67,7 +66,7 @@ class TabHabitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentTabHabitBinding.inflate(
+        _binding = FragmentTabTipsBinding.inflate(
             inflater,
             container,
             false
@@ -83,7 +82,7 @@ class TabHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Mengatur RecyclerView
-        binding.rvHabits.apply {
+        binding.rvTips.apply {
 
             // Daftar disusun secara vertikal
             layoutManager = LinearLayoutManager(
@@ -91,7 +90,7 @@ class TabHabitFragment : Fragment() {
             )
 
             // Memasang adapter dan aksi klik item
-            adapter = WellnessAdapter(habitList) { item ->
+            adapter = WellnessAdapter(tipsList) { item ->
 
                 Toast.makeText(
                     requireContext(),

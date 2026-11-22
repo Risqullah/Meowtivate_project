@@ -1,13 +1,8 @@
-package com.example.project_risqullah.Home.pertemuan_9.tutorial
+package com.example.project_risqullah.Onboarding
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.project_risqullah.R
 
 class TutorialFragmentAdapter(
     activity: FragmentActivity
