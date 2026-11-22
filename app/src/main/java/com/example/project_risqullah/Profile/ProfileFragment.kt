@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.FragmentProfileBinding
+import android.content.Intent
+import com.example.project_risqullah.HealthInfoActivity
 
 class ProfileFragment : Fragment() {
 
@@ -62,6 +64,16 @@ class ProfileFragment : Fragment() {
         )
 
         binding.listHealthyHabits.adapter = adapter
+
+        // Membuka halaman Informasi Kesehatan
+        binding.btnHealthInformation.setOnClickListener {
+            val intent = Intent(
+                requireContext(),
+                HealthInfoActivity::class.java
+            )
+
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

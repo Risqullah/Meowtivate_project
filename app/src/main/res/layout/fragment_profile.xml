@@ -390,6 +390,78 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- INFORMASI KESEHATAN -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnHealthInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/surface_white"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="1dp"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <FrameLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_about_badge">
+
+                    <ImageView
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Informasi kesehatan"
+                        android:src="@drawable/ic_info" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Informasi Kesehatan"
+                        android:textColor="@color/navy"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Artikel dan edukasi dari Kemenkes RI"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="›"
+                    android:textColor="@color/muted"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
         <!-- TOMBOL UBAH TARGET -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEditTargets"
@@ -448,8 +520,8 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:scrollbars="none"
-                tools:listitem="@layout/item_habit"
-                tools:itemCount="4" />
+                tools:itemCount="4"
+                tools:listitem="@layout/item_habit" />
 
         </androidx.cardview.widget.CardView>
 
