@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project_risqullah.data.AppDatabase
+import com.example.project_risqullah.data.entity.ActivityRecordEntity
 import com.example.project_risqullah.databinding.FragmentActivityHistoryBinding
 import kotlinx.coroutines.launch
 
@@ -40,8 +43,11 @@ class ActivityHistoryFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Membuat adapter
-        recordAdapter = ActivityRecordAdapter()
+        // Membuat adapter dan menghubungkan aksi Hapus
+        recordAdapter = ActivityRecordAdapter { record ->
+
+            showDeleteConfirmation(record)
+        }
 
         // Mengatur RecyclerView
         binding.rvActivityRecords.apply {
@@ -102,6 +108,62 @@ class ActivityHistoryFragment : Fragment() {
 
                 currentBinding.tvEmptyRecords.text =
                     "Gagal memuat aktivitas."
+            }
+        }
+    }
+
+    // Menampilkan dialog konfirmasi penghapusan
+    private fun showDeleteConfirmation(
+        record: ActivityRecordEntity
+    ) {
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Hapus Aktivitas?")
+            .setMessage(
+                "Apakah kamu yakin ingin menghapus catatan " +
+                        "\"${record.name}\"?"
+            )
+            .setNegativeButton("Batal", null)
+            .setPositiveButton("Hapus") { _, _ ->
+
+                deleteActivity(record)
+            }
+            .show()
+    }
+
+    // Menghapus aktivitas melalui Room DAO
+    private fun deleteActivity(
+        record: ActivityRecordEntity
+    ) {
+
+        val context = requireContext()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            try {
+
+                val database = AppDatabase.getInstance(context)
+
+                database
+                    .activityRecordDao()
+                    .delete(record)
+
+                Toast.makeText(
+                    context,
+                    "Aktivitas berhasil dihapus.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                // Memuat ulang RecyclerView
+                loadActivityRecords()
+
+            } catch (e: Exception) {
+
+                Toast.makeText(
+                    context,
+                    "Gagal menghapus aktivitas.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

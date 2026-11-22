@@ -10,8 +10,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class ActivityRecordAdapter :
-    RecyclerView.Adapter<ActivityRecordAdapter.RecordViewHolder>() {
+class ActivityRecordAdapter(
+    private val onDeleteClick: (ActivityRecordEntity) -> Unit
+) : RecyclerView.Adapter<ActivityRecordAdapter.RecordViewHolder>() {
 
     private var recordList = listOf<ActivityRecordEntity>()
 
@@ -68,6 +69,11 @@ class ActivityRecordAdapter :
             tvRecordDate.text = dateFormat.format(
                 Date(record.createdAt)
             )
+
+            // Aksi ketika tombol Hapus ditekan
+            btnDeleteRecord.setOnClickListener {
+                onDeleteClick(record)
+            }
         }
     }
 
