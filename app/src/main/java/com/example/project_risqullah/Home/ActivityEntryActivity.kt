@@ -3,8 +3,12 @@ package com.example.project_risqullah.Home
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.project_risqullah.R
+import com.example.project_risqullah.data.AppDatabase
+import com.example.project_risqullah.data.entity.ActivityRecordEntity
 import com.example.project_risqullah.databinding.ActivityEntryBinding
+import kotlinx.coroutines.launch
 import java.util.UUID
 
 class ActivityEntryActivity : AppCompatActivity() {
@@ -18,7 +22,6 @@ class ActivityEntryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menghubungkan layout dengan ViewBinding
         binding = ActivityEntryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -40,7 +43,7 @@ class ActivityEntryActivity : AppCompatActivity() {
         updateAmountHint()
     }
 
-    // Mengatur kategori awal berdasarkan tombol yang dipilih di Home
+    // Mengatur kategori awal dari Dashboard
     private fun applyInitialCategory() {
 
         val category = intent.getStringExtra(EXTRA_CATEGORY)
@@ -55,7 +58,7 @@ class ActivityEntryActivity : AppCompatActivity() {
         binding.chipGroupFilter.check(selectedChip)
     }
 
-    // Mengatur perubahan pilihan kategori
+    // Mengatur perubahan kategori
     private fun setupChipGroup() {
 
         binding.chipGroupFilter.setOnCheckedStateChangeListener { _, _ ->
@@ -63,7 +66,7 @@ class ActivityEntryActivity : AppCompatActivity() {
         }
     }
 
-    // Mengubah petunjuk input berdasarkan kategori
+    // Mengubah petunjuk input sesuai kategori
     private fun updateAmountHint() {
 
         binding.etDuration.hint = when (
@@ -76,7 +79,7 @@ class ActivityEntryActivity : AppCompatActivity() {
         }
     }
 
-    // Mengambil kategori dan satuan aktivitas
+    // Mengambil kategori dan satuan
     private fun getCategoryInfo(): Pair<String, String> {
 
         return when (binding.chipGroupFilter.checkedChipId) {
@@ -87,7 +90,7 @@ class ActivityEntryActivity : AppCompatActivity() {
         }
     }
 
-    // Mengatur proses penyimpanan aktivitas
+    // Mengatur penyimpanan aktivitas
     private fun setupSaveButton() {
 
         binding.btnSaveActivity.setOnClickListener {
@@ -132,8 +135,8 @@ class ActivityEntryActivity : AppCompatActivity() {
 
             val (category, unit) = getCategoryInfo()
 
-            // Membuat objek catatan aktivitas
-            val record = ActivityRecord(
+            // Membuat data aktivitas untuk Room
+            val record = ActivityRecordEntity(
                 id = UUID.randomUUID().toString(),
                 name = activityName,
                 category = category,
@@ -142,19 +145,44 @@ class ActivityEntryActivity : AppCompatActivity() {
                 createdAt = System.currentTimeMillis()
             )
 
-            // Menyimpan catatan ke penyimpanan lokal
-            ActivityRecordStorage.add(this, record)
+            // Mencegah tombol ditekan berulang kali
+            binding.btnSaveActivity.isEnabled = false
 
-            Toast.makeText(
-                this,
-                "Aktivitas berhasil disimpan!",
-                Toast.LENGTH_SHORT
-            ).show()
+            // Menyimpan data melalui DAO
+            lifecycleScope.launch {
 
-            // Membersihkan input setelah berhasil disimpan
-            binding.etActivityName.text?.clear()
-            binding.etDuration.text?.clear()
-            binding.textInputLayout.error = null
+                try {
+
+                    val database = AppDatabase.getInstance(
+                        applicationContext
+                    )
+
+                    database.activityRecordDao().insert(record)
+
+                    Toast.makeText(
+                        this@ActivityEntryActivity,
+                        "Aktivitas berhasil disimpan!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // Membersihkan input setelah berhasil
+                    binding.etActivityName.text?.clear()
+                    binding.etDuration.text?.clear()
+                    binding.textInputLayout.error = null
+
+                } catch (e: Exception) {
+
+                    Toast.makeText(
+                        this@ActivityEntryActivity,
+                        "Aktivitas gagal disimpan",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } finally {
+
+                    binding.btnSaveActivity.isEnabled = true
+                }
+            }
         }
     }
 }

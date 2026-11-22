@@ -6,18 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.project_risqullah.R
+import com.example.project_risqullah.data.AppDatabase
 import com.example.project_risqullah.databinding.FragmentHistoryOverviewBinding
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 import kotlin.math.roundToInt
-
 
 class HistoryOverviewFragment : Fragment() {
 
     private var _binding: FragmentHistoryOverviewBinding? = null
 
     private val binding get() = _binding!!
+
+    private val statisticsHelper = HistoryStatisticsHelper()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,54 +47,73 @@ class HistoryOverviewFragment : Fragment() {
         refreshStatistics()
     }
 
-    // Memperbarui seluruh statistik
+    // Mengambil data statistik dari Room
     private fun refreshStatistics() {
 
-        val records = ActivityRecordStorage.getAll(
-            requireContext()
-        )
+        val context = requireContext()
 
-        val statistics = HistoryStatisticsHelper.calculate(
-            records
-        )
+        viewLifecycleOwner.lifecycleScope.launch {
 
-        val locale = Locale.forLanguageTag("id-ID")
+            try {
 
-        // Format total langkah
-        val numberFormat = NumberFormat.getIntegerInstance(
-            locale
-        )
+                val database = AppDatabase.getInstance(context)
 
-        binding.tvWeeklyStepsTotal.text =
-            "${numberFormat.format(statistics.totalSteps.toLong())} langkah"
+                val records = database
+                    .activityRecordDao()
+                    .getAll()
 
-        // Format rata-rata air putih
-        val waterFormat = NumberFormat.getNumberInstance(
-            locale
-        ).apply {
-            minimumFractionDigits = 1
-            maximumFractionDigits = 1
+                if (_binding == null) {
+                    return@launch
+                }
+
+                val statistics = statisticsHelper.calculate(
+                    records
+                )
+
+                val locale = Locale.forLanguageTag("id-ID")
+
+                // Total langkah
+                val numberFormat = NumberFormat.getIntegerInstance(
+                    locale
+                )
+
+                binding.tvWeeklyStepsTotal.text =
+                    "${numberFormat.format(statistics.totalSteps.toLong())} langkah"
+
+                // Rata-rata air putih
+                val waterFormat = NumberFormat.getNumberInstance(
+                    locale
+                ).apply {
+                    minimumFractionDigits = 1
+                    maximumFractionDigits = 1
+                }
+
+                binding.tvAverageWater.text =
+                    "${waterFormat.format(statistics.averageWaterMl / 1000.0)} L"
+
+                // Rata-rata tidur
+                val sleepMinutes = (
+                        statistics.averageSleepHours * 60
+                        ).roundToInt()
+
+                val sleepHours = sleepMinutes / 60
+
+                val remainingMinutes = sleepMinutes % 60
+
+                binding.tvAverageSleep.text =
+                    "${sleepHours}j ${remainingMinutes}m"
+
+                // Grafik langkah mingguan
+                updateWeeklyChart(statistics.dailySteps)
+
+            } catch (e: Exception) {
+                // Statistik tetap menggunakan teks awal
+                // jika database gagal dibaca.
+            }
         }
-
-        binding.tvAverageWater.text =
-            "${waterFormat.format(statistics.averageWaterMl / 1000.0)} L"
-
-        // Format durasi tidur dalam jam dan menit
-        val sleepMinutes = (
-                statistics.averageSleepHours * 60
-                ).roundToInt()
-
-        val sleepHours = sleepMinutes / 60
-        val remainingMinutes = sleepMinutes % 60
-
-        binding.tvAverageSleep.text =
-            "${sleepHours}j ${remainingMinutes}m"
-
-        // Memperbarui grafik langkah mingguan
-        updateWeeklyChart(statistics.dailySteps)
     }
 
-    // Mengatur tinggi batang grafik berdasarkan data
+    // Memperbarui tinggi grafik
     private fun updateWeeklyChart(
         dailySteps: List<Double>
     ) {
@@ -115,19 +138,16 @@ class HistoryOverviewFragment : Fragment() {
                 0.0
             }
 
-            // Menghitung proporsi tinggi grafik
             val ratio = if (maxSteps > 0) {
                 value / maxSteps
             } else {
                 0.0
             }
 
-            // Tinggi maksimum batang 84dp
             val newHeight = (
                     84 * density * ratio
                     ).roundToInt()
 
-            // Menjaga agar batang kecil tetap terlihat
             val minimumHeight = (
                     4 * density
                     ).roundToInt()
@@ -142,7 +162,6 @@ class HistoryOverviewFragment : Fragment() {
 
             bar.layoutParams = layoutParams
 
-            // Warna coral untuk hari ini
             val barColor = if (index == 6) {
                 R.color.coral
             } else {
@@ -158,7 +177,7 @@ class HistoryOverviewFragment : Fragment() {
         }
     }
 
-    // Memperbarui statistik ketika halaman aktif kembali
+    // Memuat ulang statistik ketika halaman aktif kembali
     override fun onResume() {
         super.onResume()
 

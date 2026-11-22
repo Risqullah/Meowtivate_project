@@ -18,6 +18,9 @@ import java.text.NumberFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.math.roundToInt
+import androidx.lifecycle.lifecycleScope
+import com.example.project_risqullah.data.AppDatabase
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -226,110 +229,129 @@ class HomeFragment : Fragment() {
 
         val context = requireContext()
 
-        // Mengambil batas awal hari ini
-        val today = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            try {
+
+                // Mengambil awal hari ini
+                val today = Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, 0)
+                    set(Calendar.MINUTE, 0)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
+
+                val startOfDay = today.timeInMillis
+
+                // Mengambil awal hari berikutnya
+                val tomorrow = (today.clone() as Calendar).apply {
+                    add(Calendar.DAY_OF_YEAR, 1)
+                }
+
+                val endOfDay = tomorrow.timeInMillis
+
+                // Mengambil catatan dari Room
+                val records = AppDatabase.getInstance(context)
+                    .activityRecordDao()
+                    .getAll()
+
+                // Memilih catatan hari ini
+                val todayRecords = records.filter {
+                    it.createdAt >= startOfDay &&
+                            it.createdAt < endOfDay
+                }
+
+                if (_binding == null) {
+                    return@launch
+                }
+
+                // Total langkah
+                val totalSteps = todayRecords
+                    .filter {
+                        it.category.equals(
+                            "Langkah",
+                            ignoreCase = true
+                        )
+                    }
+                    .sumOf { it.amount }
+
+                // Total air putih
+                val totalWater = todayRecords
+                    .filter {
+                        it.category.equals(
+                            "Air Putih",
+                            ignoreCase = true
+                        )
+                    }
+                    .sumOf { it.amount }
+
+                // Total durasi tidur
+                val totalSleep = todayRecords
+                    .filter {
+                        it.category.equals(
+                            "Tidur",
+                            ignoreCase = true
+                        )
+                    }
+                    .sumOf { it.amount }
+
+                val numberFormat = NumberFormat.getIntegerInstance(
+                    Locale.forLanguageTag("id-ID")
+                )
+
+                // TARGET LANGKAH
+                val stepTarget = 6000
+
+                binding.tvStepsProgress.text =
+                    "${numberFormat.format(totalSteps.roundToInt())} / " +
+                            "${numberFormat.format(stepTarget)}"
+
+                binding.pbSteps.max = stepTarget
+
+                binding.pbSteps.progress =
+                    totalSteps.roundToInt()
+                        .coerceAtLeast(0)
+                        .coerceAtMost(stepTarget)
+
+                // TARGET AIR PUTIH
+                val waterTarget = 1600
+
+                binding.tvWaterProgress.text =
+                    "${numberFormat.format(totalWater.roundToInt())} / " +
+                            "${numberFormat.format(waterTarget)} ml"
+
+                binding.pbWater.max = waterTarget
+
+                binding.pbWater.progress =
+                    totalWater.roundToInt()
+                        .coerceAtLeast(0)
+                        .coerceAtMost(waterTarget)
+
+                // TARGET TIDUR
+                val sleepTargetMinutes = 7 * 60
+
+                val totalSleepMinutes =
+                    (totalSleep * 60).roundToInt()
+                        .coerceAtLeast(0)
+
+                val sleepHours = totalSleepMinutes / 60
+
+                val remainingMinutes = totalSleepMinutes % 60
+
+                binding.tvSleepProgress.text =
+                    "${sleepHours}j ${remainingMinutes}m / 7j"
+
+                binding.pbSleep.max = sleepTargetMinutes
+
+                binding.pbSleep.progress =
+                    totalSleepMinutes.coerceAtMost(
+                        sleepTargetMinutes
+                    )
+
+            } catch (e: Exception) {
+                // Mempertahankan tampilan awal jika database gagal dibaca.
+            }
         }
-
-        val startOfDay = today.timeInMillis
-
-        // Mengambil batas awal hari berikutnya
-        val tomorrow = (today.clone() as Calendar).apply {
-            add(Calendar.DAY_OF_YEAR, 1)
-        }
-
-        val endOfDay = tomorrow.timeInMillis
-
-        // Mengambil aktivitas yang dicatat hari ini
-        val todayRecords = ActivityRecordStorage.getAll(context)
-            .filter {
-                it.createdAt >= startOfDay &&
-                        it.createdAt < endOfDay
-            }
-
-        // Menghitung jumlah langkah
-        val totalSteps = todayRecords
-            .filter {
-                it.category.equals("Langkah", ignoreCase = true)
-            }
-            .sumOf { it.amount }
-
-        // Menghitung konsumsi air putih
-        val totalWater = todayRecords
-            .filter {
-                it.category.equals("Air Putih", ignoreCase = true)
-            }
-            .sumOf { it.amount }
-
-        // Menghitung durasi tidur
-        val totalSleep = todayRecords
-            .filter {
-                it.category.equals("Tidur", ignoreCase = true)
-            }
-            .sumOf { it.amount }
-
-        // Format angka Indonesia
-        val numberFormat = NumberFormat.getIntegerInstance(
-            Locale.forLanguageTag("id-ID")
-        )
-
-        // =================================
-        // TARGET LANGKAH KAKI
-        // =================================
-
-        val stepTarget = 6000
-
-        binding.tvStepsProgress.text =
-            "${numberFormat.format(totalSteps.roundToInt())} / " +
-                    "${numberFormat.format(stepTarget)}"
-
-        binding.pbSteps.max = stepTarget
-
-        binding.pbSteps.progress =
-            totalSteps.roundToInt()
-                .coerceAtLeast(0)
-                .coerceAtMost(stepTarget)
-
-        // =================================
-        // TARGET AIR PUTIH
-        // =================================
-
-        val waterTarget = 1600
-
-        binding.tvWaterProgress.text =
-            "${numberFormat.format(totalWater.roundToInt())} / " +
-                    "${numberFormat.format(waterTarget)} ml"
-
-        binding.pbWater.max = waterTarget
-
-        binding.pbWater.progress =
-            totalWater.roundToInt()
-                .coerceAtLeast(0)
-                .coerceAtMost(waterTarget)
-
-        // =================================
-        // TARGET DURASI TIDUR
-        // =================================
-
-        val sleepTargetMinutes = 7 * 60
-
-        val totalSleepMinutes =
-            (totalSleep * 60).roundToInt()
-                .coerceAtLeast(0)
-
-        val sleepHours = totalSleepMinutes / 60
-        val remainingMinutes = totalSleepMinutes % 60
-
-        binding.tvSleepProgress.text =
-            "${sleepHours}j ${remainingMinutes}m / 7j"
-
-        binding.pbSleep.max = sleepTargetMinutes
-
-        binding.pbSleep.progress =
-            totalSleepMinutes.coerceAtMost(sleepTargetMinutes)
     }
 
     override fun onResume() {

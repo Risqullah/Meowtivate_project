@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.project_risqullah.data.AppDatabase
 import com.example.project_risqullah.databinding.FragmentActivityHistoryBinding
+import kotlinx.coroutines.launch
 
 class ActivityHistoryFragment : Fragment() {
 
@@ -42,43 +45,68 @@ class ActivityHistoryFragment : Fragment() {
 
         // Mengatur RecyclerView
         binding.rvActivityRecords.apply {
-
             layoutManager = LinearLayoutManager(requireContext())
-
             adapter = recordAdapter
-
             setHasFixedSize(false)
         }
-
-        // Memuat data saat halaman dibuka
-        loadActivityRecords()
     }
 
-    // Membaca data dari penyimpanan lokal
+    // Mengambil data dari Room Database
     private fun loadActivityRecords() {
 
-        val records = ActivityRecordStorage.getAll(
-            requireContext()
-        )
+        val context = requireContext()
 
-        recordAdapter.submitList(records)
+        viewLifecycleOwner.lifecycleScope.launch {
 
-        // Mengatur tampilan ketika data kosong
-        if (records.isEmpty()) {
+            try {
 
-            binding.rvActivityRecords.visibility = View.GONE
+                val database = AppDatabase.getInstance(context)
 
-            binding.tvEmptyRecords.visibility = View.VISIBLE
+                val records = database
+                    .activityRecordDao()
+                    .getAll()
 
-        } else {
+                val currentBinding = _binding
+                    ?: return@launch
 
-            binding.rvActivityRecords.visibility = View.VISIBLE
+                recordAdapter.submitList(records)
 
-            binding.tvEmptyRecords.visibility = View.GONE
+                // Menampilkan kondisi data kosong
+                if (records.isEmpty()) {
+
+                    currentBinding.rvActivityRecords.visibility =
+                        View.GONE
+
+                    currentBinding.tvEmptyRecords.visibility =
+                        View.VISIBLE
+
+                } else {
+
+                    currentBinding.rvActivityRecords.visibility =
+                        View.VISIBLE
+
+                    currentBinding.tvEmptyRecords.visibility =
+                        View.GONE
+                }
+
+            } catch (e: Exception) {
+
+                val currentBinding = _binding
+                    ?: return@launch
+
+                currentBinding.rvActivityRecords.visibility =
+                    View.GONE
+
+                currentBinding.tvEmptyRecords.visibility =
+                    View.VISIBLE
+
+                currentBinding.tvEmptyRecords.text =
+                    "Gagal memuat aktivitas."
+            }
         }
     }
 
-    // Memuat ulang data setiap halaman kembali aktif
+    // Memuat ulang data ketika halaman aktif
     override fun onResume() {
         super.onResume()
 
