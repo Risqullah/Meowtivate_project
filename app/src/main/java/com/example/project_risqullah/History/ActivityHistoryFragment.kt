@@ -148,6 +148,10 @@ class ActivityHistoryFragment : Fragment() {
                     .activityRecordDao()
                     .delete(record)
 
+                // Memperbarui jumlah badge pada tab Aktivitas
+                (parentFragment as? HistoryFragment)
+                    ?.refreshActivityBadge()
+
                 Toast.makeText(
                     context,
                     "Aktivitas berhasil dihapus.",

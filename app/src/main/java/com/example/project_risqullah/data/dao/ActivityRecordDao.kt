@@ -13,6 +13,10 @@ interface ActivityRecordDao {
     @Query("SELECT * FROM activity_records ORDER BY createdAt DESC")
     suspend fun getAll(): List<ActivityRecordEntity>
 
+    // Mengambil jumlah seluruh catatan
+    @Query("SELECT COUNT(*) FROM activity_records")
+    suspend fun getCount(): Int
+
     // Menyimpan catatan aktivitas
     @Insert
     suspend fun insert(record: ActivityRecordEntity)
