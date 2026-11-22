@@ -95,6 +95,11 @@ class HomeFragment : Fragment() {
             openActivityEntry("Tidur")
         }
 
+        // Aktivitas lainnya
+        binding.btnGridOther.setOnClickListener {
+            openActivityEntry("Umum")
+        }
+
         // XP dan Level Mochi
         binding.btnGridXp.setOnClickListener {
             navigateToTab(R.id.nav_pet)
