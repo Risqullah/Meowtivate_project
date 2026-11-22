@@ -53,14 +53,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".data.entity.ActivityRecordEntity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".data.dao.ActivityRecordDao"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".HealthInfoActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

@@ -1,21 +1,21 @@
 package com.example.project_risqullah.data.entity
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.project_risqullah.R
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-class ActivityRecordEntity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_record_entity)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-    }
-}
+@Entity(tableName = "activity_records")
+data class ActivityRecordEntity(
+
+    @PrimaryKey
+    val id: String,
+
+    val name: String,
+
+    val category: String,
+
+    val amount: Double,
+
+    val unit: String,
+
+    val createdAt: Long
+)

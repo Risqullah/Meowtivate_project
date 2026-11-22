@@ -1,21 +1,27 @@
 package com.example.project_risqullah.data.dao
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.project_risqullah.R
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import com.example.project_risqullah.data.entity.ActivityRecordEntity
 
-class ActivityRecordDao : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_record_dao)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-    }
+@Dao
+interface ActivityRecordDao {
+
+    // Mengambil seluruh catatan aktivitas
+    @Query("SELECT * FROM activity_records ORDER BY createdAt DESC")
+    suspend fun getAll(): List<ActivityRecordEntity>
+
+    // Menyimpan catatan aktivitas
+    @Insert
+    suspend fun insert(record: ActivityRecordEntity)
+
+    // Menghapus satu catatan aktivitas
+    @Delete
+    suspend fun delete(record: ActivityRecordEntity)
+
+    // Menghapus seluruh catatan aktivitas
+    @Query("DELETE FROM activity_records")
+    suspend fun deleteAll()
 }
