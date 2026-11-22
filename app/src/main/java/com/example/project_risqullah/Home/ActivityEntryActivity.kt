@@ -14,6 +14,7 @@ import java.util.UUID
 class ActivityEntryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEntryBinding
+    private var selectedCategory: String = "Umum"
 
     companion object {
         const val EXTRA_CATEGORY = "extra_activity_category"
@@ -37,7 +38,6 @@ class ActivityEntryActivity : AppCompatActivity() {
         }
 
         // Mengatur komponen halaman
-        setupChipGroup()
         applyInitialCategory()
         setupSaveButton()
         updateAmountHint()
@@ -46,46 +46,35 @@ class ActivityEntryActivity : AppCompatActivity() {
     // Mengatur kategori awal dari Dashboard
     private fun applyInitialCategory() {
 
-        val category = intent.getStringExtra(EXTRA_CATEGORY)
+        selectedCategory = intent.getStringExtra(EXTRA_CATEGORY)
+            ?: "Umum"
 
-        val selectedChip = when (category) {
-            "Langkah" -> R.id.chipSteps
-            "Air Putih" -> R.id.chipWater
-            "Tidur" -> R.id.chipSleep
-            else -> R.id.chipAll
-        }
-
-        binding.chipGroupFilter.check(selectedChip)
-    }
-
-    // Mengatur perubahan kategori
-    private fun setupChipGroup() {
-
-        binding.chipGroupFilter.setOnCheckedStateChangeListener { _, _ ->
-            updateAmountHint()
+        binding.tvSelectedCategory.text = when (selectedCategory) {
+            "Langkah" -> "👣 Langkah"
+            "Air Putih" -> "💧 Air Putih"
+            "Tidur" -> "💤 Tidur"
+            else -> "📝 Umum"
         }
     }
 
     // Mengubah petunjuk input sesuai kategori
     private fun updateAmountHint() {
 
-        binding.etDuration.hint = when (
-            binding.chipGroupFilter.checkedChipId
-        ) {
-            R.id.chipSteps -> "Jumlah langkah kaki"
-            R.id.chipWater -> "Jumlah air putih (ml)"
-            R.id.chipSleep -> "Durasi tidur (jam)"
+        binding.etDuration.hint = when (selectedCategory) {
+            "Langkah" -> "Jumlah langkah (langkah)"
+            "Air Putih" -> "Jumlah air putih (ml)"
+            "Tidur" -> "Durasi tidur (jam)"
             else -> "Durasi aktivitas (menit)"
         }
     }
 
-    // Mengambil kategori dan satuan
+    // Mengambil kategori dan satuan aktivitas
     private fun getCategoryInfo(): Pair<String, String> {
 
-        return when (binding.chipGroupFilter.checkedChipId) {
-            R.id.chipSteps -> Pair("Langkah", "langkah")
-            R.id.chipWater -> Pair("Air Putih", "ml")
-            R.id.chipSleep -> Pair("Tidur", "jam")
+        return when (selectedCategory) {
+            "Langkah" -> Pair("Langkah", "langkah")
+            "Air Putih" -> Pair("Air Putih", "ml")
+            "Tidur" -> Pair("Tidur", "jam")
             else -> Pair("Umum", "menit")
         }
     }
