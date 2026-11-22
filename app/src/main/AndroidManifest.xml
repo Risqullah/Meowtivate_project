@@ -25,15 +25,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".DetailActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".archive.praktikum.pertemuan_6.SixthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -46,10 +38,6 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Onboarding.TutorialMeowtivateActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".archive.praktikum.pertemuan_10.TenthActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
