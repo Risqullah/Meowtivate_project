@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 import kotlin.math.roundToInt
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class HistoryOverviewFragment : Fragment() {
 
@@ -127,6 +129,36 @@ class HistoryOverviewFragment : Fragment() {
             binding.barSaturday,
             binding.barSunday
         )
+
+        // Mengambil seluruh label hari
+        val dayLabels = listOf(
+            binding.tvMonday,
+            binding.tvTuesday,
+            binding.tvWednesday,
+            binding.tvThursday,
+            binding.tvFriday,
+            binding.tvSaturday,
+            binding.tvSunday
+        )
+
+        // Menentukan tanggal awal grafik
+        val startDate = Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_YEAR, -6)
+        }
+
+        // Format nama hari Indonesia
+        val dayFormat = SimpleDateFormat(
+            "EEE",
+            Locale.forLanguageTag("id-ID")
+        )
+
+        // Memperbarui label sesuai tanggal
+        dayLabels.forEach { label ->
+
+            label.text = dayFormat.format(startDate.time)
+
+            startDate.add(Calendar.DAY_OF_YEAR, 1)
+        }
 
         val maxSteps = dailySteps.maxOrNull() ?: 0.0
 

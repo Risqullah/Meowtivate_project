@@ -181,9 +181,13 @@ class ActivityHistoryFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
 
+    override fun onDestroyView() {
+        // Melepaskan adapter dari RecyclerView
+        binding.rvActivityRecords.adapter = null
+        // Membersihkan View Binding
         _binding = null
+
+        super.onDestroyView()
     }
 }
