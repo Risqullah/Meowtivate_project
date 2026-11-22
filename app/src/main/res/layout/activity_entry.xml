@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".Home.pertemuan_9.NinthActivity">
+    tools:context=".Home.ActivityEntryActivity">
 
     <!-- HEADER WAVE -->
     <View
@@ -27,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="Pertemuan 9"
+        app:title="Catat Aktivitas"
         app:titleTextColor="@color/white" />
 
     <TextView
@@ -38,7 +39,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Kenali Meowtivate"
+        android:text="Catat aktivitas sehatmu"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +54,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/inter_regular"
-        android:text="Bangun kebiasaan sehat bersama Mochi."
+        android:text="Pilih kategori dan catat kebiasaan sehatmu."
         android:textColor="@color/peach"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,8 +148,8 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_rounded_container"
                         android:fontFamily="@font/inter_regular"
-                        android:hint="Durasi aktivitas (menit)"
-                        android:inputType="number"
+                        android:hint="Jumlah aktivitas atau durasi"
+                        android:inputType="numberDecimal"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
                         android:textColor="@color/navy"
@@ -243,122 +244,6 @@
                     app:chipStrokeColor="@color/border_default" />
 
             </com.google.android.material.chip.ChipGroup>
-
-            <!-- GRID 6 FITUR -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Jelajahi fitur"
-                android:textColor="@color/navy"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/inter_regular"
-                android:text="Pilihan fitur untuk mendukung rutinitasmu."
-                android:textColor="@color/text_secondary"
-                android:textSize="10sp" />
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/gridMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="2dp"
-                app:columnCount="3"
-                app:useDefaultMargins="true">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridSteps"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Langkah"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/steps_surface"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridWater"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Air Putih"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/water_surface"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridSleep"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Tidur"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/sleep_surface"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridXp"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="XP &amp; Level"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/peach"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridHistory"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Riwayat"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/mint"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGridTargets"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Target"
-                    android:textAllCaps="false"
-                    android:textColor="@color/navy"
-                    android:textSize="10sp"
-                    app:backgroundTint="@color/surface_white"
-                    app:cornerRadius="12dp"
-                    app:layout_columnWeight="1"
-                    app:layout_gravity="fill_horizontal"
-                    app:strokeColor="@color/border_default"
-                    app:strokeWidth="1dp" />
-
-            </androidx.gridlayout.widget.GridLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -41,7 +41,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Home.pertemuan_9.NinthActivity"
+            android:name=".Home.ActivityEntryActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

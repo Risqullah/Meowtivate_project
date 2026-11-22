@@ -439,6 +439,270 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+                <!-- JUDUL AKSES CEPAT -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Akses cepat"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Pilih fitur untuk mengelola kebiasaan sehatmu."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gridQuickAccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="2dp"
+                    app:columnCount="3"
+                    app:useDefaultMargins="true">
+
+                    <!-- LANGKAH -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridSteps"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/steps_surface"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="👣"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Langkah"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- AIR PUTIH -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridWater"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/water_surface"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💧"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Air Putih"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- TIDUR -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridSleep"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/sleep_surface"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💤"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Tidur"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- XP DAN LEVEL -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridXp"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/peach"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🐾"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="XP &amp; Level"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- RIWAYAT -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridHistory"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/mint"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📊"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Riwayat"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- TARGET -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnGridTargets"
+                        android:layout_width="0dp"
+                        android:layout_height="78dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/surface_white"
+                        app:cardCornerRadius="14dp"
+                        app:cardElevation="1dp"
+                        app:cardUseCompatPadding="false"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎯"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_semibold"
+                                android:text="Target"
+                                android:textColor="@color/navy"
+                                android:textSize="10sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.gridlayout.widget.GridLayout>
 
             </LinearLayout>
 

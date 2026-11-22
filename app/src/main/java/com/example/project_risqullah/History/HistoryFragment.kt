@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleAdapter
+import androidx.core.content.ContextCompat
 import com.example.project_risqullah.R
 import com.example.project_risqullah.databinding.FragmentHistoryBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,6 +22,7 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentHistoryBinding.inflate(
             inflater,
             container,
@@ -34,54 +38,41 @@ class HistoryFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Data contoh aktivitas Meowtivate
-        val activityData = listOf(
-            hashMapOf<String, Any>(
-                "image" to R.drawable.mascot_mochi_menyapa,
-                "sender" to "Langkah kaki",
-                "message" to "Aktivitas berjalan dicatat hari ini."
-            ),
-            hashMapOf<String, Any>(
-                "image" to R.drawable.mascot_mochi_kediplove,
-                "sender" to "Air putih",
-                "message" to "Jangan lupa memenuhi kebutuhan air putih."
-            ),
-            hashMapOf<String, Any>(
-                "image" to R.drawable.mascot_mochi_tutupmata,
-                "sender" to "Tidur",
-                "message" to "Jaga rutinitas tidur yang cukup."
-            ),
-            hashMapOf<String, Any>(
-                "image" to R.drawable.mascot_mochi_petsystem,
-                "sender" to "Target harian",
-                "message" to "Terus bangun kebiasaan sehat bersama Mochi."
-            )
-        )
+        // Memasang adapter ke ViewPager2
+        binding.historyViewPager.adapter = HistoryTabsAdapter(this)
 
-        // Nama key yang akan dihubungkan ke setiap komponen
-        val from = arrayOf(
-            "image",
-            "sender",
-            "message"
-        )
+        // Menghubungkan TabLayout dengan ViewPager2
+        TabLayoutMediator(
+            binding.historyTabLayout,
+            binding.historyViewPager
+        ) { tab, position ->
 
-        // ID komponen pada item_message.xml
-        val to = intArrayOf(
-            R.id.avatarImg,
-            R.id.textSender,
-            R.id.textMessage
-        )
+            when (position) {
 
-        // Membuat dan memasang SimpleAdapter
-        val adapter = SimpleAdapter(
-            requireContext(),
-            activityData,
-            R.layout.item_message,
-            from,
-            to
-        )
+                // TAB RINGKASAN
+                0 -> {
 
-        binding.listRecentActivities.adapter = adapter
+                    tab.text = "Ringkasan"
+
+                    tab.icon = ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_nav_history
+                    )
+                }
+
+                // TAB AKTIVITAS
+                1 -> {
+
+                    tab.text = "Aktivitas"
+
+                    tab.icon = ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_edit
+                    )
+                }
+            }
+
+        }.attach()
     }
 
     override fun onDestroyView() {
